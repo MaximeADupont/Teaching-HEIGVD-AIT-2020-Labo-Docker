@@ -1,0 +1,177 @@
+[s6-init] making user provided files available at /var/run/s6/etc...exited 0.
+[s6-init] ensuring user provided files have correct perms...exited 0.
+[fix-attrs.d] applying ownership & permissions fixes...
+[fix-attrs.d] done.
+[cont-init.d] executing container initialization scripts...
+[cont-init.d] done.
+[services.d] starting services
+/opt/bin/serf agent --join ha --tag role=backend
+==> Starting Serf agent...
+[services.d] done.
+==> Starting Serf agent RPC...
+==> Serf agent running!
+         Node name: '4e267bacf3f4'
+         Bind addr: '0.0.0.0:7946'
+                       RPC addr: '127.0.0.1:7373'
+                      Encrypted: false
+                       Snapshot: false
+                        Profile: lan
+    Message Compression Enabled: true
+==> Joining cluster...(replay: false)
+==> 1 error occurred:
+        * Failed to join 192.168.42.42: dial tcp 192.168.42.42:7946: connect: connection refused
+
+
+Application started
+/opt/bin/serf agent --join ha --tag role=backend
+==> Starting Serf agent...
+==> Starting Serf agent RPC...
+==> Serf agent running!
+         Node name: '4e267bacf3f4'
+         Bind addr: '0.0.0.0:7946'
+                       RPC addr: '127.0.0.1:7373'
+                      Encrypted: false
+                       Snapshot: false
+                        Profile: lan
+    Message Compression Enabled: true
+==> Joining cluster...(replay: false)
+    Join completed. Synced with 1 initial agents
+
+==> Log data will now stream in as it occurs:
+
+    2021/01/06 10:08:32 [INFO] agent: Serf agent starting
+    2021/01/06 10:08:32 [INFO] serf: EventMemberJoin: 4e267bacf3f4 192.168.42.22
+    2021/01/06 10:08:32 [INFO] agent: joining: [ha] replay: false
+    2021/01/06 10:08:32 [INFO] serf: EventMemberJoin: 85b0ec89ef74 192.168.42.11
+    2021/01/06 10:08:32 [INFO] serf: EventMemberJoin: ee84352360eb 192.168.42.42
+    2021/01/06 10:08:32 [INFO] agent: joined: 1 nodes
+HEAD / 200 11.262 ms - 129
+    2021/01/06 10:08:33 [INFO] agent: Received event: member-join
+HEAD / 200 1.356 ms - 129
+HEAD / 200 1.164 ms - 129
+HEAD / 200 1.096 ms - 129
+HEAD / 200 1.534 ms - 129
+HEAD / 200 1.307 ms - 129
+HEAD / 200 1.327 ms - 129
+HEAD / 200 1.051 ms - 129
+HEAD / 200 1.165 ms - 129
+HEAD / 200 1.117 ms - 129
+HEAD / 200 1.022 ms - 129
+HEAD / 200 1.089 ms - 129
+HEAD / 200 1.044 ms - 129
+HEAD / 200 1.049 ms - 129
+HEAD / 200 1.002 ms - 129
+HEAD / 200 1.040 ms - 129
+HEAD / 200 0.926 ms - 129
+HEAD / 200 1.053 ms - 129
+HEAD / 200 0.976 ms - 129
+HEAD / 200 0.980 ms - 129
+HEAD / 200 1.011 ms - 129
+HEAD / 200 0.952 ms - 129
+HEAD / 200 0.968 ms - 129
+HEAD / 200 0.915 ms - 129
+==> Caught signal: interrupt
+==> Gracefully shutting down agent...
+    2021/01/06 10:09:18 [INFO] agent: requesting graceful leave from Serf
+[cont-finish.d] executing container finish scripts...
+[cont-finish.d] done.
+[s6-finish] waiting for services.
+[s6-finish] sending all processes the TERM signal.
+    2021/01/06 10:09:19 [INFO] agent: requesting serf shutdown
+    2021/01/06 10:09:19 [WARN] serf: Shutdown without a Leave
+    2021/01/06 10:09:19 [INFO] agent: shutdown complete
+[s6-finish] sending all processes the KILL signal and exiting.
+[s6-init] making user provided files available at /var/run/s6/etc...exited 0.
+[s6-init] ensuring user provided files have correct perms...exited 0.
+[fix-attrs.d] applying ownership & permissions fixes...
+[fix-attrs.d] done.
+[cont-init.d] executing container initialization scripts...
+[cont-init.d] done.
+[services.d] starting services
+/opt/bin/serf agent --join ha --tag role=backend
+[services.d] done.
+==> Starting Serf agent...
+==> Starting Serf agent RPC...
+==> Serf agent running!
+         Node name: '4e267bacf3f4'
+         Bind addr: '0.0.0.0:7946'
+                       RPC addr: '127.0.0.1:7373'
+                      Encrypted: false
+                       Snapshot: false
+                        Profile: lan
+    Message Compression Enabled: true
+==> Joining cluster...(replay: false)
+==> 1 error occurred:
+        * Failed to join 192.168.42.42: dial tcp 192.168.42.42:7946: connect: connection refused
+
+
+Application started
+/opt/bin/serf agent --join ha --tag role=backend
+==> Starting Serf agent...
+==> Starting Serf agent RPC...
+==> Serf agent running!
+         Node name: '4e267bacf3f4'
+         Bind addr: '0.0.0.0:7946'
+                       RPC addr: '127.0.0.1:7373'
+                      Encrypted: false
+                       Snapshot: false
+                        Profile: lan
+    Message Compression Enabled: true
+==> Joining cluster...(replay: false)
+    Join completed. Synced with 1 initial agents
+
+==> Log data will now stream in as it occurs:
+
+    2021/01/06 10:10:49 [INFO] agent: Serf agent starting
+    2021/01/06 10:10:49 [INFO] serf: EventMemberJoin: 4e267bacf3f4 192.168.42.22
+    2021/01/06 10:10:49 [INFO] agent: joining: [ha] replay: false
+    2021/01/06 10:10:49 [INFO] serf: EventMemberJoin: ee84352360eb 192.168.42.42
+    2021/01/06 10:10:49 [INFO] agent: joined: 1 nodes
+    2021/01/06 10:10:49 [INFO] serf: EventMemberJoin: 85b0ec89ef74 192.168.42.11
+HEAD / 200 8.832 ms - 129
+    2021/01/06 10:10:50 [INFO] agent: Received event: member-join
+HEAD / 200 1.400 ms - 129
+HEAD / 200 1.025 ms - 129
+HEAD / 200 1.101 ms - 129
+HEAD / 200 4.020 ms - 129
+HEAD / 200 1.224 ms - 129
+HEAD / 200 1.158 ms - 129
+HEAD / 200 1.001 ms - 129
+HEAD / 200 1.065 ms - 129
+HEAD / 200 1.559 ms - 129
+HEAD / 200 1.374 ms - 129
+HEAD / 200 1.051 ms - 129
+HEAD / 200 0.986 ms - 129
+HEAD / 200 1.826 ms - 129
+HEAD / 200 0.940 ms - 129
+HEAD / 200 2.018 ms - 129
+HEAD / 200 1.064 ms - 129
+HEAD / 200 1.034 ms - 129
+HEAD / 200 1.589 ms - 129
+HEAD / 200 0.984 ms - 129
+HEAD / 200 0.882 ms - 129
+HEAD / 200 0.923 ms - 129
+HEAD / 200 2.362 ms - 129
+HEAD / 200 0.896 ms - 129
+HEAD / 200 0.956 ms - 129
+HEAD / 200 0.948 ms - 129
+HEAD / 200 0.969 ms - 129
+HEAD / 200 1.084 ms - 129
+HEAD / 200 0.948 ms - 129
+HEAD / 200 1.234 ms - 129
+HEAD / 200 2.492 ms - 129
+HEAD / 200 1.001 ms - 129
+HEAD / 200 1.038 ms - 129
+HEAD / 200 0.898 ms - 129
+HEAD / 200 1.249 ms - 129
+==> Caught signal: interrupt
+==> Gracefully shutting down agent...
+    2021/01/06 10:12:00 [INFO] agent: requesting graceful leave from Serf
+[cont-finish.d] executing container finish scripts...
+[cont-finish.d] done.
+[s6-finish] waiting for services.
+HEAD / 200 0.892 ms - 129
+[s6-finish] sending all processes the TERM signal.
+    2021/01/06 10:12:00 [INFO] agent: requesting serf shutdown
+    2021/01/06 10:12:00 [WARN] serf: Shutdown without a Leave
+    2021/01/06 10:12:00 [INFO] agent: shutdown complete
