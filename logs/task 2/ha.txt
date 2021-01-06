@@ -1,0 +1,84 @@
+[s6-init] making user provided files available at /var/run/s6/etc...exited 0.
+[s6-init] ensuring user provided files have correct perms...exited 0.
+[fix-attrs.d] applying ownership & permissions fixes...
+[fix-attrs.d] done.
+[cont-init.d] executing container initialization scripts...
+[cont-init.d] done.
+[services.d] starting services
+/opt/bin/serf agent --join ha --replay --event-handler member-join=/serf-handlers/member-join.sh --event-handler member-leave,member-failed=/serf-handlers/member-leave.sh --tag role=balancer
+[services.d] done.
+==> Starting Serf agent...
+==> Starting Serf agent RPC...
+==> Serf agent running!
+         Node name: 'ee84352360eb'
+         Bind addr: '0.0.0.0:7946'
+                       RPC addr: '127.0.0.1:7373'
+                      Encrypted: false
+                       Snapshot: false
+                        Profile: lan
+    Message Compression Enabled: true
+==> Joining cluster...(replay: true)
+    Join completed. Synced with 1 initial agents
+
+==> Log data will now stream in as it occurs:
+
+    2021/01/06 10:08:31 [INFO] agent: Serf agent starting
+    2021/01/06 10:08:31 [INFO] serf: EventMemberJoin: ee84352360eb 192.168.42.42
+    2021/01/06 10:08:31 [INFO] agent: joining: [ha] replay: true
+    2021/01/06 10:08:31 [INFO] agent: joined: 1 nodes
+[WARNING] 005/100831 (203) : Server nodes/s1 is DOWN, reason: Layer4 connection problem, info: "Connection refused", check duration: 0ms. 1 active and 0 backup servers left. 0 sessions active, 0 requeued, 0 remaining in queue.
+    2021/01/06 10:08:32 [INFO] serf: EventMemberJoin: 85b0ec89ef74 192.168.42.11
+    2021/01/06 10:08:32 [INFO] serf: EventMemberJoin: 4e267bacf3f4 192.168.42.22
+    2021/01/06 10:08:33 [INFO] agent: Received event: member-join
+    2021/01/06 10:08:33 [ERR] agent: Error invoking script '/serf-handlers/member-join.sh': exit status 127
+[WARNING] 005/100835 (203) : Server nodes/s1 is UP, reason: Layer7 check passed, code: 200, check duration: 3ms. 2 active and 0 backup servers online. 0 sessions requeued, 0 total in queue.
+    2021/01/06 10:09:20 [INFO] memberlist: Suspect 85b0ec89ef74 has failed, no acks received
+    2021/01/06 10:09:22 [INFO] memberlist: Suspect 4e267bacf3f4 has failed, no acks received
+    2021/01/06 10:09:24 [INFO] memberlist: Marking 85b0ec89ef74 as failed, suspect timeout reached (0 peer confirmations)
+    2021/01/06 10:09:24 [INFO] serf: EventMemberLeave: 85b0ec89ef74 192.168.42.11
+    2021/01/06 10:09:25 [INFO] memberlist: Suspect 85b0ec89ef74 has failed, no acks received
+    2021/01/06 10:09:25 [INFO] agent: Received event: member-leave
+    2021/01/06 10:09:25 [ERR] agent: Error invoking script '/serf-handlers/member-leave.sh': exit status 127
+[WARNING] 005/100925 (203) : Server nodes/s1 is DOWN, reason: Layer4 timeout, check duration: 2004ms. 1 active and 0 backup servers left. 0 sessions active, 0 requeued, 0 remaining in queue.
+    2021/01/06 10:09:26 [INFO] memberlist: Marking 4e267bacf3f4 as failed, suspect timeout reached (0 peer confirmations)
+    2021/01/06 10:09:26 [INFO] serf: EventMemberLeave: 4e267bacf3f4 192.168.42.22
+    2021/01/06 10:09:27 [INFO] agent: Received event: member-leave
+    2021/01/06 10:09:27 [ERR] agent: Error invoking script '/serf-handlers/member-leave.sh': exit status 127
+[WARNING] 005/100928 (203) : Server nodes/s2 is DOWN, reason: Layer4 timeout, check duration: 2003ms. 0 active and 0 backup servers left. 0 sessions active, 0 requeued, 0 remaining in queue.
+[NOTICE] 005/100928 (203) : haproxy version is 2.2.5-34b2b10
+[NOTICE] 005/100928 (203) : path to executable is /usr/local/sbin/haproxy
+[ALERT] 005/100928 (203) : backend 'nodes' has no server available!
+[s6-init] making user provided files available at /var/run/s6/etc...exited 0.
+[s6-init] ensuring user provided files have correct perms...exited 0.
+[fix-attrs.d] applying ownership & permissions fixes...
+[fix-attrs.d] done.
+[cont-init.d] executing container initialization scripts...
+[cont-init.d] done.
+[services.d] starting services
+/opt/bin/serf agent --join ha --replay --event-handler member-join=/serf-handlers/member-join.sh --event-handler member-leave,member-failed=/serf-handlers/member-leave.sh --tag role=balancer
+[services.d] done.
+==> Starting Serf agent...
+==> Starting Serf agent RPC...
+==> Serf agent running!
+         Node name: 'ee84352360eb'
+         Bind addr: '0.0.0.0:7946'
+                       RPC addr: '127.0.0.1:7373'
+                      Encrypted: false
+                       Snapshot: false
+                        Profile: lan
+    Message Compression Enabled: true
+==> Joining cluster...(replay: true)
+    Join completed. Synced with 1 initial agents
+
+==> Log data will now stream in as it occurs:
+
+    2021/01/06 10:10:48 [INFO] agent: Serf agent starting
+    2021/01/06 10:10:48 [INFO] serf: EventMemberJoin: ee84352360eb 192.168.42.42
+    2021/01/06 10:10:48 [INFO] agent: joining: [ha] replay: true
+    2021/01/06 10:10:48 [INFO] agent: joined: 1 nodes
+[WARNING] 005/101048 (210) : Server nodes/s1 is DOWN, reason: Layer4 connection problem, info: "Connection refused", check duration: 0ms. 1 active and 0 backup servers left. 0 sessions active, 0 requeued, 0 remaining in queue.
+    2021/01/06 10:10:49 [INFO] serf: EventMemberJoin: 4e267bacf3f4 192.168.42.22
+    2021/01/06 10:10:49 [INFO] serf: EventMemberJoin: 85b0ec89ef74 192.168.42.11
+    2021/01/06 10:10:50 [INFO] agent: Received event: member-join
+    2021/01/06 10:10:50 [ERR] agent: Error invoking script '/serf-handlers/member-join.sh': exit status 127
+[WARNING] 005/101052 (210) : Server nodes/s1 is UP, reason: Layer7 check passed, code: 200, check duration: 3ms. 2 active and 0 backup servers online. 0 sessions requeued, 0 total in queue.
