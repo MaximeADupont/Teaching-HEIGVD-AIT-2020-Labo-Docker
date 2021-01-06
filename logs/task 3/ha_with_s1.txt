@@ -1,0 +1,36 @@
+[s6-init] making user provided files available at /var/run/s6/etc...exited 0.
+[s6-init] ensuring user provided files have correct perms...exited 0.
+[fix-attrs.d] applying ownership & permissions fixes...
+[fix-attrs.d] done.
+[cont-init.d] executing container initialization scripts...
+[cont-init.d] done.
+[services.d] starting services
+/opt/bin/serf agent --join ha --replay --event-handler member-join=/serf-handlers/member-join.sh --event-handler member-leave,member-failed=/serf-handlers/member-leave.sh --tag role=balancer
+==> Starting Serf agent...
+==> Starting Serf agent RPC...
+==> Serf agent running!
+         Node name: '3734c6cb7dc4'
+         Bind addr: '0.0.0.0:7946'
+                       RPC addr: '127.0.0.1:7373'
+                      Encrypted: false
+                       Snapshot: false
+                        Profile: lan
+    Message Compression Enabled: true
+==> Joining cluster...(replay: true)
+    Join completed. Synced with 1 initial agents
+
+==> Log data will now stream in as it occurs:
+
+    2021/01/06 11:13:11 [INFO] agent: Serf agent starting
+    2021/01/06 11:13:11 [INFO] serf: EventMemberJoin: 3734c6cb7dc4 192.168.42.2
+    2021/01/06 11:13:11 [INFO] agent: joining: [ha] replay: true
+    2021/01/06 11:13:11 [INFO] agent: joined: 1 nodes
+[services.d] done.
+[WARNING] 005/111311 (199) : Server nodes/s1 is DOWN, reason: Layer4 connection problem, info: "Connection refused", check duration: 0ms. 1 active and 0 backup servers left. 0 sessions active, 0 requeued, 0 remaining in queue.
+[WARNING] 005/111312 (199) : Server nodes/s2 is DOWN, reason: Layer4 connection problem, info: "Connection refused", check duration: 0ms. 0 active and 0 backup servers left. 0 sessions active, 0 requeued, 0 remaining in queue.
+[NOTICE] 005/111312 (199) : haproxy version is 2.2.5-34b2b10
+[NOTICE] 005/111312 (199) : path to executable is /usr/local/sbin/haproxy
+[ALERT] 005/111312 (199) : backend 'nodes' has no server available!
+    2021/01/06 11:13:12 [INFO] agent: Received event: member-join
+    2021/01/06 11:15:56 [INFO] serf: EventMemberJoin: fa927653ab7a 192.168.42.3
+    2021/01/06 11:15:57 [INFO] agent: Received event: member-join
