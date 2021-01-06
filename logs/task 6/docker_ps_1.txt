@@ -1,0 +1,5 @@
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS                                                                                    NAMES
+121270a1304e        s                   "/init"             12 minutes ago      Up 12 minutes       3000/tcp, 7373/tcp, 7946/tcp                                                             s3
+48c432d0b85e        s                   "/init"             12 minutes ago      Up 12 minutes       3000/tcp, 7373/tcp, 7946/tcp                                                             s2
+f20d74ec7476        s                   "/init"             12 minutes ago      Up 12 minutes       3000/tcp, 7373/tcp, 7946/tcp                                                             s1
+59f0ed0bc880        ha                  "/init"             12 minutes ago      Up 12 minutes       0.0.0.0:80->80/tcp, 7373/tcp, 0.0.0.0:1936->1936/tcp, 0.0.0.0:9999->9999/tcp, 7946/tcp   ha
