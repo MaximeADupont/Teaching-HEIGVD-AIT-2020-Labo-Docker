@@ -17,6 +17,8 @@ authors : Cuenoud Robin, Dupont Maxime, Mulhauser Florian
 
 ### Introduction
 
+In this lab we will use the infrastructure we had from the previous lab and make it more easily manageable. To this end we will use different tools such as docker, HAproxy, nodejs and Handlebars.
+The goal is to have a dynamic adaptation to new backend nodes added without needing to restart the whole infrastructure.
 
 ### Table of content
 
@@ -27,6 +29,8 @@ authors : Cuenoud Robin, Dupont Maxime, Mulhauser Florian
 4. [Use a template engine to easily generate configuration files](#task-4)
 5. [Generate a new load balancer configuration when membership changes](#task-5)
 6. [Make the load balancer automatically reload the new configuration](#task-6)
+7. [Difficulties](#diff)
+8. [Conclusion](#con)
 
 
 ### <a name="task-0"></a>Task 0: Identify issues and install the tools
@@ -297,14 +301,15 @@ authors : Cuenoud Robin, Dupont Maxime, Mulhauser Florian
   size. Try to find them. They are talking about `squashing` or
   `flattening` images.
   
-  > TODO
+  > The way we can mitigate having to rebuild to whole image is in the way we structure our layers, for example it is good practice to order the layers from least to most likely to change layers, that way we minimize the time taken to rebuild it.    
+  The difference between both things is one of security and clarity, for the first one, it is much easier for a dev to see what is happening, so it's easier to work with BUT it means it's also easier to hack (because we can see all the things that are happening). On the other end, reducing the layers makes it way harder to see what's happening and thus increases the security of our image, it is possible as described in multiple articles to have an image with multiple layers when you are developping it and then "flattening" it to make it more secure.
 
 2. Propose a different approach to architecture our images to be able
    to reuse as much as possible what we have done. Your proposition
    should also try to avoid as much as possible repetitions between
    your images.
    
-   > TODO
+   > Currently we have a decent amount of overlap between our images, wether it be the tools that we use or the configuration files and such that regulate how our system behaves. We could build a common "ancestor" for installations of the tools and more generic things that are the same in both images, and then use 2 smaller images with very definite specs. Considering the size of our current system, it wouldn't be very worth at the moment (we would go from 2 images to 3), but it is a much healthier base to expand upon, and would likely become necessary as the system grows.
 
 3. Provide the `/tmp/haproxy.cfg` file generated in the `ha` container
    after each step.  Place the output into the `logs` folder like you
@@ -318,7 +323,7 @@ authors : Cuenoud Robin, Dupont Maxime, Mulhauser Florian
 4. Based on the three output files you have collected, what can you
    say about the way we generate it? What is the problem if any?
    
-   > TODO
+   > We can see that we do not keep previous files, or at least what they contained, the content is overwritten each time, we would need to modify the line we added from > to >>, that way it would just add stuff on top of what's present, and not completly overwrite.
 
 
 ### <a name="task-5"></a>Task 5: Generate a new load balancer configuration when membership changes
@@ -383,10 +388,18 @@ And here we can see that the node we removed is gone from the list, our setup is
    improvements or ways to do the things differently. If any, provide
    references to your readings for the improvements.
 
-> TODO
+> We feel like the solution is pretty satisfying, we can add and remove nodes without having to restart the whole thing and changing the config files (as we described in M2) which is a tedious task. We could still improve on what we have, for us the biggest problem left is that we still have to add the containers manually. So it makes scaling the application not that easy, because we would have to monitor traffic ourselves and add nodes accordingly. So this product wouldn't work for some sites that have irregular traffic, for example amazon on black friday etc... The improvement would then be to have nodes added automatically. But otherwise this works fine, despite some loss in uptime when we remove or add another node.
 
-### Difficulty
+###  <a name="diff"></a> Difficulties
 
-### Conlusion
+Nothing in particular, the lab was quite smooth to do, we had some small issues regarding windows  
+but since it was nothing new we didn't lose a lot of time on them.
+
+###  <a name="con"></a> Conclusion
+
+We were able to see what we needed to take into consideration when creating such a system, how do better construct it and shape it so that it would be easy to build on that foundation.   
+
+We also saw how to use different tools and their use for scaling application and managing ressources.  
+It was a nice lab, bringing us lots of clarity about how real-world apps would work (of course this is on a much smaller scale).
 
 
