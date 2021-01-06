@@ -1,0 +1,1 @@
+Container e2096ab89fb5 has joined the Serf cluster with the following IP address: 192.168.42.3
