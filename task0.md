@@ -96,7 +96,7 @@
 
 4. #### **[M4]** You probably noticed that the list of web application nodes is hardcoded in the load balancer configuration. How can we manage the web app nodes in a more dynamic fashion?
 
-   > To be more dynamic, we can think of an application , like a proxy, that will scan the webapps containers to see if one is added or remove one. Then it will tell the load balancer that some changes occurs to make him update his haproxy configuration dynamicaly and restart to handle the new situation.
+   > To be more dynamic, we can think of an application , like a proxy, that will scan the webapps containers to see if one is added or remove one. Then it will tell the load balancer that some changes occurs to make him update his haproxy configuration dynamically and restart to handle the new situation.
    >
    > Another way of doing it would be to make the webapp container introduce themself to the loadbalancer when created, and when they leave they notify him to. This way he can update dynamicaly. It can be easier to implement but if the webapp crash, maybe the loadbalancer won't notice and won't be notified.
 
@@ -106,6 +106,17 @@
 
    #### Do you think our current solution is able to run additional management processes beside the main web server / load balancer process in a container? If no, what is missing / required to reach the goal? If yes, how to proceed to run for example a log forwarding process?
 
+   > Unfortunatly the answer is no, our current solution is not able to run an additionnal management process. This is due to our Docker policy that state that one container is a process, thus only one process (our webapp) can be running within our container
+   >
+   > To be able to fix it and reach the goal, we need to add a **process supervisor** to the container. This thing will run like a "main" in our container and will handle the multiples process here (haproxy, webapp, monitoring agent, etc).
+
 6. #### **[M6]** In our current solution, although the load balancer configuration is changing dynamically, it doesn't follow dynamically the configuration of our distributed system when web servers are added or removed. If we take a closer look at the `run.sh` script, we see two calls to `sed` which will replace two lines in the `haproxy.cfg` configuration file just before we start `haproxy`. You clearly see that the configuration file has two lines and the script will replace these two lines.
 
    #### What happens if we add more web server nodes? Do you think it is really dynamic? It's far away from being a dynamic configuration. Can you propose a solution to solve this?
+
+   > Currently, if we add more web server nodes, nothing happens with them: the haproxy doesn't add it to its configuration file. 
+   >
+   > The load balancer configuration may be changed dynamically to the existing web server, but it won't be able to update dynamically for an add/remove of a web server.
+   >
+   > To solve this, we need to do something as discussed in `M3` and `M4` to add/remove the server to the haproxy configuration file dynamically: having a webapp server template and a service/script that change the haproxy container configuration and restart it when an add/remove is detected in the server cluster.
+
